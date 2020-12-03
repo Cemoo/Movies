@@ -7,7 +7,7 @@
 
 import Foundation
 
-public class API: APIEngine {
+public class API: APIProtocol {
     
     private var session: URLSession!
     

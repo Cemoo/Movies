@@ -10,6 +10,6 @@ import MoviesAPI
 
 let app = AppContainer()
 
-final class AppContainer() {
-    let service = API()
+final class AppContainer {
+    let service = API(URLSession(configuration: .default))
 }

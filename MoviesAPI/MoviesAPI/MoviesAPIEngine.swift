@@ -12,7 +12,7 @@ public enum APIResult<Value> {
     case fail(Error)
 }
 
-public protocol APIEngine: class {
+public protocol APIProtocol: class {
     func fetch(from url: URL, _ method: APIMethod, _ requestData: Data?, _ completionHandler: @escaping (APIResult<Data>) -> Void)
 }
 
