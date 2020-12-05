@@ -20,6 +20,7 @@ class MovieDetailTbViewCell: UITableViewCell {
     }
     
     func setDetails() {
+        guard movieDetail != nil else {return}
         if index == 0 {
             titleLabel.text = movieDetail.originalTitle ?? ""
             descriptionLabel.text = movieDetail.overview ?? ""

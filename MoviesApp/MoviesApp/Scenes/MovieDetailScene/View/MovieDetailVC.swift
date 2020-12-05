@@ -73,7 +73,6 @@ extension MovieDetailVC: MovieDetailViewModelDelegate {
         case .showDetail(let movieDetail):
             self.movieDetail = movieDetail
             setMovieImage()
-            
         }
     }
 }
