@@ -13,13 +13,25 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var movieNameLabel: UILabel!
     
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 4
+    }
+    
     var movie: Movie! {
         didSet {
             self.setMovie()
         }
     }
     
-    var isFavourite: Bool = false
+    var isFavourite: Bool = false {
+        didSet {
+            if isFavourite {
+                self.favouriteButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else {
+                self.favouriteButton.setImage(UIImage(systemName: "star"), for: .normal)
+            }
+        }
+    }
     
     private func setMovie() {
         if let movie = movie {
@@ -30,6 +42,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         self.movie = nil
+        self.isFavourite = false
         self.movieImageView.image = nil
         self.movieNameLabel.text = ""
     }

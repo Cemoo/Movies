@@ -29,6 +29,8 @@
 		D0DD57572578FAE30067A8E9 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD57562578FAE30067A8E9 /* MoviesViewModel.swift */; };
 		D0DD575F2578FB120067A8E9 /* MoviesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD575E2578FB120067A8E9 /* MoviesTests.swift */; };
 		D0DD576A2578FDE60067A8E9 /* MockMoviesAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DD57692578FDE60067A8E9 /* MockMoviesAPI.swift */; };
+		D0E426B3257BF91B003066A6 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E426B2257BF91B003066A6 /* MovieDetail.swift */; };
+		D0E426B7257BF982003066A6 /* MovieDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E426B6257BF982003066A6 /* MovieDetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		D0DD575E2578FB120067A8E9 /* MoviesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTests.swift; sourceTree = "<group>"; };
 		D0DD57602578FB120067A8E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0DD57692578FDE60067A8E9 /* MockMoviesAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMoviesAPI.swift; sourceTree = "<group>"; };
+		D0E426B2257BF91B003066A6 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
+		D0E426B6257BF982003066A6 /* MovieDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,9 +197,8 @@
 		D0D03A762578F49D001D131B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D0D03A772578F4A4001D131B /* Model */,
-				D0D03A782578F4A9001D131B /* View */,
-				D0D03A792578F4AD001D131B /* ViewModel */,
+				D0E426AB257BF7B2003066A6 /* MoviesListScene */,
+				D0E426AE257BF7D7003066A6 /* MovieDetailScene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -251,6 +254,49 @@
 				D0DD57692578FDE60067A8E9 /* MockMoviesAPI.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		D0E426AB257BF7B2003066A6 /* MoviesListScene */ = {
+			isa = PBXGroup;
+			children = (
+				D0D03A772578F4A4001D131B /* Model */,
+				D0D03A782578F4A9001D131B /* View */,
+				D0D03A792578F4AD001D131B /* ViewModel */,
+			);
+			path = MoviesListScene;
+			sourceTree = "<group>";
+		};
+		D0E426AE257BF7D7003066A6 /* MovieDetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				D0E426AF257BF7EB003066A6 /* Model */,
+				D0E426B0257BF7F1003066A6 /* View */,
+				D0E426B1257BF7F5003066A6 /* ViewModel */,
+			);
+			path = MovieDetailScene;
+			sourceTree = "<group>";
+		};
+		D0E426AF257BF7EB003066A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D0E426B2257BF91B003066A6 /* MovieDetail.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D0E426B0257BF7F1003066A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D0E426B6257BF982003066A6 /* MovieDetailVC.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D0E426B1257BF7F5003066A6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,8 +412,10 @@
 				D07A30F62579148F008BEC40 /* MoviesVC.swift in Sources */,
 				D07A3122257A7919008BEC40 /* ListCollectionViewLayout.swift in Sources */,
 				D0D03A232578BE9F001D131B /* AppDelegate.swift in Sources */,
+				D0E426B7257BF982003066A6 /* MovieDetailVC.swift in Sources */,
 				D0D03A252578BE9F001D131B /* SceneDelegate.swift in Sources */,
 				D07A311A257A4B10008BEC40 /* MovieCollectionViewCell.swift in Sources */,
+				D0E426B3257BF91B003066A6 /* MovieDetail.swift in Sources */,
 				D0DD57572578FAE30067A8E9 /* MoviesViewModel.swift in Sources */,
 				D07A30E625790545008BEC40 /* ResourceLoader.swift in Sources */,
 			);

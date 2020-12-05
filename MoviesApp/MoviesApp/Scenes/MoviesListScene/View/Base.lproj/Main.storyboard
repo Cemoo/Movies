@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Contents-->
+        <!--Movies-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="MoviesVC" id="BYZ-38-t0r" customClass="MoviesVC" customModule="MoviesApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +68,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="SeL-cT-I2O" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="1kb-Tq-xnq"/>
                             <constraint firstItem="SeL-cT-I2O" firstAttribute="top" secondItem="XrB-vG-Yyg" secondAttribute="bottom" constant="16" id="3Xn-Dt-dGT"/>
@@ -79,7 +79,8 @@
                             <constraint firstAttribute="trailing" secondItem="XrB-vG-Yyg" secondAttribute="trailing" id="nV9-cU-r6B"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Contents" id="RqG-FH-Dz0">
+                    <navigationItem key="navigationItem" title="Movies" id="RqG-FH-Dz0">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Z4Y-9z-43b"/>
                         <barButtonItem key="rightBarButtonItem" image="list.dash" catalog="system" id="2L0-sd-Uh3">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
@@ -90,11 +91,87 @@
                     <connections>
                         <outlet property="movieCollectionView" destination="SeL-cT-I2O" id="i2P-B8-MkN"/>
                         <outlet property="searchBar" destination="XrB-vG-Yyg" id="aNZ-96-agg"/>
+                        <segue destination="Xgt-Wz-0d5" kind="show" identifier="test" id="Iih-jo-dXB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="844.92753623188412" y="55.580357142857139"/>
+        </scene>
+        <!--Movie DetailVC-->
+        <scene sceneID="7Ue-W8-zSK">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailVC" id="Xgt-Wz-0d5" customClass="MovieDetailVC" customModule="MoviesApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2wT-bL-efY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ygg-B8-PkL">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <view key="tableHeaderView" contentMode="scaleToFill" id="hXp-WQ-34B" userLabel="Image Header View">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="210"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oDa-FG-Cfc">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="200"/>
+                                        </imageView>
+                                    </subviews>
+                                    <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="oDa-FG-Cfc" secondAttribute="trailing" id="9iS-KU-V4l"/>
+                                        <constraint firstItem="oDa-FG-Cfc" firstAttribute="top" secondItem="hXp-WQ-34B" secondAttribute="top" id="cNl-ZZ-iz7"/>
+                                        <constraint firstItem="oDa-FG-Cfc" firstAttribute="leading" secondItem="hXp-WQ-34B" secondAttribute="leading" id="vfm-HL-f3q"/>
+                                        <constraint firstAttribute="bottom" secondItem="oDa-FG-Cfc" secondAttribute="bottom" id="ygU-Ft-jcv"/>
+                                    </constraints>
+                                </view>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="3UL-AE-TIQ" detailTextLabel="hdQ-Se-PLx" rowHeight="68" style="IBUITableViewCellStyleSubtitle" id="tEs-eS-oJO">
+                                        <rect key="frame" x="0.0" y="238" width="414" height="68"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tEs-eS-oJO" id="2fK-PZ-Mpg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="3UL-AE-TIQ">
+                                                    <rect key="frame" x="20" y="14" width="33" height="20.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hdQ-Se-PLx">
+                                                    <rect key="frame" x="20" y="37.5" width="44" height="14.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="G4Q-XR-qyc"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ygg-B8-PkL" firstAttribute="leading" secondItem="G4Q-XR-qyc" secondAttribute="leading" id="BtV-p1-ufn"/>
+                            <constraint firstItem="G4Q-XR-qyc" firstAttribute="trailing" secondItem="Ygg-B8-PkL" secondAttribute="trailing" id="SIg-OG-5zV"/>
+                            <constraint firstItem="G4Q-XR-qyc" firstAttribute="bottom" secondItem="Ygg-B8-PkL" secondAttribute="bottom" id="SjK-1F-Doy"/>
+                            <constraint firstItem="Ygg-B8-PkL" firstAttribute="top" secondItem="G4Q-XR-qyc" secondAttribute="top" id="iWb-ul-jOg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="3kL-XP-8ia">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="5CO-EA-N0T">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XiX-qP-M69" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627.536231884058" y="54.910714285714285"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IBY-BX-VPp">
@@ -104,6 +181,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="80S-aa-4Qv">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -117,8 +199,12 @@
     </scenes>
     <resources>
         <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="star" catalog="system" width="128" height="116"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

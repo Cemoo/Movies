@@ -55,7 +55,6 @@ extension MoviesVC: UISearchBarDelegate {
     
     private func cancelFiltering() {
         searchBar.text = nil
-        searchBar.resignFirstResponder()
         movies = viewModel.movies
         movieCollectionView.reloadData()
         filteringStarted = false
@@ -92,7 +91,8 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = movieCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
-        cell.layer.cornerRadius = 4
+        cell.favouriteButton.tag = indexPath.row
+        cell.favouriteButton.addTarget(self, action: #selector(addInFavourites(_:)), for: .touchUpInside)
         cell.movie = movies[indexPath.row]
         return cell
     }
@@ -112,6 +112,23 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: self.filteringStarted ? 0 : 60)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "test", sender: self)
+    }
+    
+    
+}
+
+//MARK: - Add Favourites
+extension MoviesVC {
+    @objc func addInFavourites(_ sender: UIButton) {
+        if let cell = movieCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as? MovieCollectionViewCell {
+            cell.isFavourite.toggle()
+        }
+        
+        //Add Fav here.
     }
 }
 
