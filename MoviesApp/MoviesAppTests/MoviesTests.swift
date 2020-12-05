@@ -66,10 +66,11 @@ private class MoviesTests: XCTestCase {
         mockView.outputs.removeAll()
         
         //Then
-        let filteredMovies = viewModel.filterMovies("After")
-    
-        
+        viewModel.filterMovies("H") { (filteredMovies) in
+            XCTAssertTrue(!filteredMovies.isEmpty)
+        }
     }
+    
 }
 
 private class MockMoviesListView: UIView, MoviesViewModelDelegate {
@@ -78,6 +79,9 @@ private class MockMoviesListView: UIView, MoviesViewModelDelegate {
     var outputs: [MoviesOutputs] = []
     
     var movies: [Movie] = []
+    
+    var routedToDetail: Bool = false
+    
     private var filteredMovies: [Movie] = []
 
     convenience init(viewModel: MoviesViewModelProtocol ) {

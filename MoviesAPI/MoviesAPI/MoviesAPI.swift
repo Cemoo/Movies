@@ -26,7 +26,6 @@ public class API: APIProtocol {
             if let error = error {
                 completionHandler(APIResult.fail(error))
             } else {
-                
                 if let data = dataResponse, let response = urlResponse as? HTTPURLResponse {
                     if response.statusCode >= 200 && response.statusCode < 400 {
                         completionHandler(APIResult.success(data))

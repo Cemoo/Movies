@@ -23,3 +23,18 @@ class MockMoviesAPI: APIProtocol {
         completionHandler(APIResult.success(data))
     }
 }
+
+class MockMovieDetailAPI: APIProtocol {
+    
+    private var mockMovieDetailResponse: MovieDetail!
+    
+    init(_ response: MovieDetail) {
+        self.mockMovieDetailResponse = response
+    }
+    
+    func fetch(from url: URL, _ method: APIMethod, _ requestData: Data?, _ completionHandler: @escaping (APIResult<Data>) -> Void) {
+        
+        let data = try! JSONEncoder().encode(mockMovieDetailResponse)
+        completionHandler(APIResult.success(data))
+    }
+}

@@ -27,7 +27,7 @@ protocol MoviesViewModelDelegate: class {
 }
 
 final class MoviesViewModel: MoviesViewModelProtocol {
-    var delegate: MoviesViewModelDelegate!
+    weak var delegate: MoviesViewModelDelegate!
     
     var movies: [Movie] = []
     
@@ -67,6 +67,7 @@ final class MoviesViewModel: MoviesViewModelProtocol {
             }
             
             return title.contains(filterText)
+            
         }
         
         completion(filteredMovies)

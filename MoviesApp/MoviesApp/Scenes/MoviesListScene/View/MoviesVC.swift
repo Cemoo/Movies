@@ -115,9 +115,14 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "test", sender: self)
+        routeDetailPage(indexPath.row)
     }
     
+    private func routeDetailPage(_ index: Int) {
+        let movie = movies[index]
+        let detailPage = MovieDetailBuilder.make(with: MovieDetailViewModel(app.service, movieId: movie.id ?? 0))
+        navigationController?.pushViewController(detailPage, animated: true)
+    }
     
 }
 

@@ -16,4 +16,13 @@ class ResourceLoader {
         let movieResponse = try! decoder.decode(MovieResponse.self, from: data)
         return movieResponse
     }
+    
+    static func getMovieDetail() -> MovieDetail {
+        let bundle = Bundle.main
+        let url = bundle.url(forResource: "MovieDetail", withExtension: "json")
+        let data = try! Data(contentsOf: url!)
+        let decoder = Decoders.plainDateDecoder
+        let movieDetail = try! decoder.decode(MovieDetail.self, from: data)
+        return movieDetail
+    }
 }

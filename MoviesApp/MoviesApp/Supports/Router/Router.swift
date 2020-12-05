@@ -17,12 +17,12 @@ final class Router {
         switch route {
         case .movies(let pageNo):
             return URL(string: baseUrl + "popular?language=en-US&api_key=\(apiKey)&page=\(pageNo)")!
-        case .movieDetail:
-            return URL(string: "")!
+        case .movieDetail(let movieId):
+            return URL(string: baseUrl + "\(movieId)?api_key=\(apiKey)")!
         }
     }
     
     enum Routes {
-        case movies(Int), movieDetail
+        case movies(Int), movieDetail(Int)
     }
 }
