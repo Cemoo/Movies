@@ -12,6 +12,11 @@
 		D07A30EE2579062C008BEC40 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A30ED2579062C008BEC40 /* Decoders.swift */; };
 		D07A30F325790D7D008BEC40 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A30F225790D7D008BEC40 /* Router.swift */; };
 		D07A30F62579148F008BEC40 /* MoviesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A30F52579148F008BEC40 /* MoviesVC.swift */; };
+		D07A311A257A4B10008BEC40 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3119257A4B10008BEC40 /* MovieCollectionViewCell.swift */; };
+		D07A311D257A4B25008BEC40 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D07A311C257A4B25008BEC40 /* MovieCollectionViewCell.xib */; };
+		D07A3122257A7919008BEC40 /* ListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3121257A7919008BEC40 /* ListCollectionViewLayout.swift */; };
+		D07A3125257B9F79008BEC40 /* UIImageView-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3124257B9F79008BEC40 /* UIImageView-Ext.swift */; };
+		D07A3128257BA651008BEC40 /* UIViewController - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3127257BA651008BEC40 /* UIViewController - Ext.swift */; };
 		D0D03A232578BE9F001D131B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A222578BE9F001D131B /* AppDelegate.swift */; };
 		D0D03A252578BE9F001D131B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A242578BE9F001D131B /* SceneDelegate.swift */; };
 		D0D03A2A2578BE9F001D131B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D03A282578BE9F001D131B /* Main.storyboard */; };
@@ -56,6 +61,11 @@
 		D07A30ED2579062C008BEC40 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
 		D07A30F225790D7D008BEC40 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		D07A30F52579148F008BEC40 /* MoviesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesVC.swift; sourceTree = "<group>"; };
+		D07A3119257A4B10008BEC40 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		D07A311C257A4B25008BEC40 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		D07A3121257A7919008BEC40 /* ListCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewLayout.swift; sourceTree = "<group>"; };
+		D07A3124257B9F79008BEC40 /* UIImageView-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView-Ext.swift"; sourceTree = "<group>"; };
+		D07A3127257BA651008BEC40 /* UIViewController - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController - Ext.swift"; sourceTree = "<group>"; };
 		D0D03A1F2578BE9F001D131B /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D03A222578BE9F001D131B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D03A242578BE9F001D131B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -107,6 +117,15 @@
 				D07A30F225790D7D008BEC40 /* Router.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		D07A3118257A4AF1008BEC40 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D07A3119257A4B10008BEC40 /* MovieCollectionViewCell.swift */,
+				D07A311C257A4B25008BEC40 /* MovieCollectionViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		D0D03A162578BE9E001D131B = {
@@ -192,8 +211,10 @@
 		D0D03A782578F4A9001D131B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D07A3118257A4AF1008BEC40 /* Cell */,
 				D0D03A282578BE9F001D131B /* Main.storyboard */,
 				D07A30F52579148F008BEC40 /* MoviesVC.swift */,
+				D07A3121257A7919008BEC40 /* ListCollectionViewLayout.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +230,8 @@
 		D0DD57532578FA110067A8E9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				D07A3124257B9F79008BEC40 /* UIImageView-Ext.swift */,
+				D07A3127257BA651008BEC40 /* UIViewController - Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,6 +334,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D07A311D257A4B25008BEC40 /* MovieCollectionViewCell.xib in Resources */,
 				D0D03A2F2578BEA1001D131B /* LaunchScreen.storyboard in Resources */,
 				D0D03A2C2578BEA1001D131B /* Assets.xcassets in Resources */,
 				D07A30EA25790570008BEC40 /* Movies.json in Resources */,
@@ -335,11 +359,15 @@
 				D0D03A7B2578F5C4001D131B /* Movie.swift in Sources */,
 				D0DD576A2578FDE60067A8E9 /* MockMoviesAPI.swift in Sources */,
 				D07A30EE2579062C008BEC40 /* Decoders.swift in Sources */,
+				D07A3125257B9F79008BEC40 /* UIImageView-Ext.swift in Sources */,
 				D0D03A722578C3E6001D131B /* AppContainer.swift in Sources */,
 				D07A30F325790D7D008BEC40 /* Router.swift in Sources */,
+				D07A3128257BA651008BEC40 /* UIViewController - Ext.swift in Sources */,
 				D07A30F62579148F008BEC40 /* MoviesVC.swift in Sources */,
+				D07A3122257A7919008BEC40 /* ListCollectionViewLayout.swift in Sources */,
 				D0D03A232578BE9F001D131B /* AppDelegate.swift in Sources */,
 				D0D03A252578BE9F001D131B /* SceneDelegate.swift in Sources */,
+				D07A311A257A4B10008BEC40 /* MovieCollectionViewCell.swift in Sources */,
 				D0DD57572578FAE30067A8E9 /* MoviesViewModel.swift in Sources */,
 				D07A30E625790545008BEC40 /* ResourceLoader.swift in Sources */,
 			);

@@ -21,25 +21,64 @@ private class MoviesTests: XCTestCase {
         mockApi = MockMoviesAPI(movieResponse)
     }
     
+    private func createMockView() -> MockMoviesListView {
+        mockApi = MockMoviesAPI(ResourceLoader.getMovies())
+        viewModel = MoviesViewModel(mockApi)
+        mockView = MockMoviesListView(viewModel:viewModel)
+        return mockView
+    }
+    
     func test_loadMovies_controlViewOutputs() {
         
         //Given
-        mockMovies = ResourceLoader.getMovies()
-        start(mockMovies)
-        mockView = MockMoviesListView(viewModel: MoviesViewModel(mockApi))
+        let mockView = createMockView()
         
         //When
-        mockView.load()
+        mockView.load(1)
         
         //Then
         XCTAssertTrue(mockView.outputs.count == 3) //loadingtrue, showMovies, loadingfalse
-        XCTAssert(mockView.outputs.contains(.showMovies(self.mockMovies.result ?? [])))
+    }
+    
+    func test_page1andPage2FetchMovies_movieCountMustBeChange() {
+        //Given
+        let mockView = createMockView()
+        
+        //GIVEN
+        viewModel.load(with: 1)
+        let page1count = mockView.movies.count
+        
+        viewModel.load(with: 2)
+        let page2Count = mockView.movies.count
+        
+        //THEN
+        XCTAssertFalse(page1count == page2Count)
+    }
+    
+    func test_searchTest_filterMovies() {
+        
+        //Given
+        let mockView = createMockView()
+        
+        //When
+        mockView.load(1)
+        mockView.load(2)
+        mockView.outputs.removeAll()
+        
+        //Then
+        let filteredMovies = viewModel.filterMovies("After")
+    
+        
     }
 }
 
 private class MockMoviesListView: UIView, MoviesViewModelDelegate {
     private var viewModel: MoviesViewModelProtocol!
+
     var outputs: [MoviesOutputs] = []
+    
+    var movies: [Movie] = []
+    private var filteredMovies: [Movie] = []
 
     convenience init(viewModel: MoviesViewModelProtocol ) {
         self.init()
@@ -47,12 +86,17 @@ private class MockMoviesListView: UIView, MoviesViewModelDelegate {
         self.viewModel.delegate = self
     }
     
-    func load() {
-        viewModel.load(with: 1)
+    func load(_ pageIndex: Int) {
+        viewModel.load(with: pageIndex)
     }
     
     func handle(_ output: MoviesOutputs) {
         outputs.append(output)
+        switch output {
+        case .showMovies(let mockMovies):
+            self.movies.append(contentsOf: mockMovies)
+        default:
+            break
+        }
     }
 }
-
