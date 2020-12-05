@@ -15,11 +15,13 @@ class MovieDetailTests: XCTestCase {
     private var viewModel: MovieDetailViewModelProtocol!
     private var mockMovieDetail: MovieDetail!
     private var mockView: MockDetailView!
+    private var mockMovie: Movie!
     
     private func createMockView() -> MockDetailView {
+        mockMovie = ResourceLoader.getMovies().results![0]
         mockMovieDetail = ResourceLoader.getMovieDetail()
         mockApi = MockMovieDetailAPI(mockMovieDetail)
-        viewModel = MovieDetailViewModel(mockApi, movieId: 123)
+        viewModel = MovieDetailViewModel(mockApi, movie: mockMovie)
         mockView = MockDetailView(viewModel)
         return mockView
     }

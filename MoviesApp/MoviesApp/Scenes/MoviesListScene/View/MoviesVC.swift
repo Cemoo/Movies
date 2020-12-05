@@ -120,7 +120,7 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     private func routeDetailPage(_ index: Int) {
         let movie = movies[index]
-        let detailPage = MovieDetailBuilder.make(with: MovieDetailViewModel(app.service, movieId: movie.id ?? 0))
+        let detailPage = MovieDetailBuilder.make(with: MovieDetailViewModel(app.service, movie: movie))
         navigationController?.pushViewController(detailPage, animated: true)
     }
     

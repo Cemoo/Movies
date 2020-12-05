@@ -23,6 +23,9 @@
 		D07A3122257A7919008BEC40 /* ListCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3121257A7919008BEC40 /* ListCollectionViewLayout.swift */; };
 		D07A3125257B9F79008BEC40 /* UIImageView-Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3124257B9F79008BEC40 /* UIImageView-Ext.swift */; };
 		D07A3128257BA651008BEC40 /* UIViewController - Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3127257BA651008BEC40 /* UIViewController - Ext.swift */; };
+		D09AE0E1257C242B00779917 /* FavouriteCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AE0E0257C242B00779917 /* FavouriteCore.swift */; };
+		D09AE0E9257C27E700779917 /* LocalStorageStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AE0E8257C27E700779917 /* LocalStorageStrategy.swift */; };
+		D09AE0EE257C293400779917 /* UserDefaulsStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09AE0ED257C293400779917 /* UserDefaulsStrategy.swift */; };
 		D0D03A232578BE9F001D131B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A222578BE9F001D131B /* AppDelegate.swift */; };
 		D0D03A252578BE9F001D131B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A242578BE9F001D131B /* SceneDelegate.swift */; };
 		D0D03A2A2578BE9F001D131B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D0D03A282578BE9F001D131B /* Main.storyboard */; };
@@ -80,6 +83,9 @@
 		D07A3121257A7919008BEC40 /* ListCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewLayout.swift; sourceTree = "<group>"; };
 		D07A3124257B9F79008BEC40 /* UIImageView-Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView-Ext.swift"; sourceTree = "<group>"; };
 		D07A3127257BA651008BEC40 /* UIViewController - Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController - Ext.swift"; sourceTree = "<group>"; };
+		D09AE0E0257C242B00779917 /* FavouriteCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteCore.swift; sourceTree = "<group>"; };
+		D09AE0E8257C27E700779917 /* LocalStorageStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalStorageStrategy.swift; sourceTree = "<group>"; };
+		D09AE0ED257C293400779917 /* UserDefaulsStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaulsStrategy.swift; sourceTree = "<group>"; };
 		D0D03A1F2578BE9F001D131B /* MoviesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoviesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D03A222578BE9F001D131B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0D03A242578BE9F001D131B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -154,6 +160,23 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		D09AE0E6257C275B00779917 /* Crud */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE0E8257C27E700779917 /* LocalStorageStrategy.swift */,
+				D09AE0ED257C293400779917 /* UserDefaulsStrategy.swift */,
+			);
+			path = Crud;
+			sourceTree = "<group>";
+		};
+		D09AE0E7257C27B200779917 /* FavouriteCore */ = {
+			isa = PBXGroup;
+			children = (
+				D09AE0E0257C242B00779917 /* FavouriteCore.swift */,
+			);
+			path = FavouriteCore;
+			sourceTree = "<group>";
+		};
 		D0D03A162578BE9E001D131B = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +218,8 @@
 		D0D03A702578C3D9001D131B /* App */ = {
 			isa = PBXGroup;
 			children = (
+				D09AE0E6257C275B00779917 /* Crud */,
+				D09AE0E7257C27B200779917 /* FavouriteCore */,
 				D0D03A242578BE9F001D131B /* SceneDelegate.swift */,
 				D0D03A222578BE9F001D131B /* AppDelegate.swift */,
 				D0D03A712578C3E6001D131B /* AppContainer.swift */,
@@ -438,6 +463,9 @@
 				D07A30F325790D7D008BEC40 /* Router.swift in Sources */,
 				D07A3128257BA651008BEC40 /* UIViewController - Ext.swift in Sources */,
 				D07A30F62579148F008BEC40 /* MoviesVC.swift in Sources */,
+				D09AE0E1257C242B00779917 /* FavouriteCore.swift in Sources */,
+				D09AE0E9257C27E700779917 /* LocalStorageStrategy.swift in Sources */,
+				D09AE0EE257C293400779917 /* UserDefaulsStrategy.swift in Sources */,
 				D03248F5257C051E001FE5C3 /* MovieDetailViewModel.swift in Sources */,
 				D07A3122257A7919008BEC40 /* ListCollectionViewLayout.swift in Sources */,
 				D03248F2257C041C001FE5C3 /* MovieDetailBuilder.swift in Sources */,

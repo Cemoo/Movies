@@ -28,7 +28,6 @@ class MovieDetailTbViewCell: UITableViewCell {
             titleLabel.text = "Vote Count"
             descriptionLabel.text = "\(movieDetail.voteCount ?? 0)"
         }
-        
     }
 
 }

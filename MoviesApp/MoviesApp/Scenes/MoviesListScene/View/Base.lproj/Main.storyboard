@@ -142,12 +142,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="3kL-XP-8ia">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="star" catalog="system" id="5CO-EA-N0T">
+                        <barButtonItem key="rightBarButtonItem" image="star" catalog="system" id="5CO-EA-N0T">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="addOrRemoveFavouritesAction:" destination="Xgt-Wz-0d5" id="UpZ-hP-tQa"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="detailTableView" destination="Ygg-B8-PkL" id="h3B-At-2f9"/>
+                        <outlet property="favouriteButton" destination="5CO-EA-N0T" id="wIt-hI-1sv"/>
                         <outlet property="movieImageView" destination="oDa-FG-Cfc" id="YRw-dS-dwV"/>
                     </connections>
                 </viewController>
