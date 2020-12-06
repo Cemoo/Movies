@@ -11,15 +11,18 @@ import MoviesAPI
 protocol MoviesViewModelProtocol: class {
     var delegate: MoviesViewModelDelegate! {get set}
     var movies: [Movie] {get set}
+    var isMoviesFiltering: Bool {get set}
     
     func load(with page: Int)
     func filterMovies(_ filterText: String, _ completion: @escaping ([Movie]) -> Void)
+    func addRemoveFavourite(_ movie: Movie, _ status: Bool)
 }
 
 enum MoviesOutputs: Equatable {
     case showLoading(Bool)
     case showMovies([Movie])
     case showError(String)
+    case reload
 }
 
 protocol MoviesViewModelDelegate: class {
@@ -30,12 +33,14 @@ final class MoviesViewModel: MoviesViewModelProtocol {
     weak var delegate: MoviesViewModelDelegate!
     
     var movies: [Movie] = []
+    var isMoviesFiltering: Bool = false
     
     private var tempMoviesForfilter: [Movie] = []
     private var service: APIProtocol!
     
     init(_ service: APIProtocol) {
         self.service = service
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFavFromMovieDetail), name: NSNotification.Name("updatemoviefav"), object: nil)
     }
     
     func load(with page: Int = 1) {
@@ -49,6 +54,7 @@ final class MoviesViewModel: MoviesViewModelProtocol {
                 do {
                     let movieResponse = try decoder.decode(MovieResponse.self, from: data)
                     self.movies.append(contentsOf: movieResponse.results ?? [])
+                    self.updateFavouriteStatus()
                     self.tempMoviesForfilter = self.movies
                     self.delegate.handle(.showMovies(self.movies))
                 } catch {
@@ -71,5 +77,37 @@ final class MoviesViewModel: MoviesViewModelProtocol {
         }
         
         completion(filteredMovies)
+    }
+    
+    @objc func updateFavFromMovieDetail() {
+        updateFavouriteStatus()
+        delegate.handle(.showMovies(movies))
+    }
+    
+    func addRemoveFavourite(_ movie: Movie, _ status: Bool) {
+        status ? app.favouriteFlow.add(movie) : app.favouriteFlow.delete(movie)
+        updateFavouriteStatus()
+        delegate.handle(.showMovies(movies))
+    }
+    
+    private func updateFavouriteStatus() {
+        let favMovies = app.favouriteFlow.get()
+        
+        if !favMovies.isEmpty {
+            favMovies.forEach { (favMovie) in
+                if let index = self.movies.firstIndex(where: {$0.id == favMovie.id}) {
+                    self.movies[index].isFavorite = favMovie.isFavorite 
+                }
+            }
+        } else {
+            var tempArray: [Movie] = []
+            for i in 0..<self.movies.count {
+                var tempMovie = movies[i]
+                tempMovie.isFavorite = false
+                tempArray.append(tempMovie)
+            }
+            
+            self.movies = tempArray
+        }
     }
 }

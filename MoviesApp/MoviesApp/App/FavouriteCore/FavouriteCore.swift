@@ -8,20 +8,13 @@
 import Foundation
 
 protocol FavouriteProtocol: class {
-    
-    associatedtype Item = Movie
-    
-    func add(_ item: Item)
-    func delete(_ item: Item)
-    func get() -> [Item]
+    func add(_ item: Movie)
+    func delete(_ item: Movie)
+    func get() -> [Movie]
 }
 
-final class FavouriteFlow<Item>: FavouriteProtocol {
-    
-    typealias Item = Movie
-    
-    var favouriteMovies: [Movie] = []
-    
+final class FavouriteFlow: FavouriteProtocol {
+            
     private var savingStrategy: LocalStorageStrategy!
     
     init(_ savingStrategy: LocalStorageStrategy) {
@@ -29,17 +22,27 @@ final class FavouriteFlow<Item>: FavouriteProtocol {
     }
     
     func add(_ item: Movie) {
-        favouriteMovies.append(item)
-        savingStrategy.saveObject(StorageKeys.favouriteMovies.rawValue, favouriteMovies)
+        var movies = get()
+        movies.append(item)
+        savingStrategy.saveObject(StorageKeys.favouriteMovies.rawValue, movies)
     }
     
     func delete(_ item: Movie) {
-        favouriteMovies = favouriteMovies.filter({$0.id != item.id ?? 0})
-        savingStrategy.saveObject(StorageKeys.favouriteMovies.rawValue, favouriteMovies)
+        var movies = get()
+        movies = movies.filter({$0.id != item.id})
+        savingStrategy.saveObject(StorageKeys.favouriteMovies.rawValue, movies)
     }
     
     func get() -> [Movie] {
-        return savingStrategy.getObject(StorageKeys.favouriteMovies.rawValue, [Movie].self) ?? []
+        let movies = savingStrategy.getObject(StorageKeys.favouriteMovies.rawValue, [Movie].self) ?? []
+        var tempMovies: [Movie] = []
+        for i in 0..<movies.count {
+            var movie = movies[i]
+            movie.isFavorite = true
+            tempMovies.append(movie)
+        }
+        
+        return tempMovies
     }
 
 }

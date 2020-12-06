@@ -44,6 +44,9 @@
                             <imageReference key="image" image="star" catalog="system" symbolScale="large" renderingMode="template"/>
                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                         </state>
+                        <connections>
+                            <action selector="favouriteAction:" destination="GNP-7w-87t" eventType="touchUpInside" id="rXb-Rx-8wh"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

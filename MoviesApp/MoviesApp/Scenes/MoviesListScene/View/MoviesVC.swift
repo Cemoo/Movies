@@ -24,7 +24,6 @@ class MoviesVC: UIViewController {
     
     private var filteringStarted: Bool = false
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
@@ -56,6 +55,7 @@ extension MoviesVC: UISearchBarDelegate {
     private func cancelFiltering() {
         searchBar.text = nil
         movies = viewModel.movies
+        viewModel.isMoviesFiltering = false
         movieCollectionView.reloadData()
         filteringStarted = false
         view.endEditing(true)
@@ -71,6 +71,7 @@ extension MoviesVC: UISearchBarDelegate {
             return
         }
         
+        viewModel.isMoviesFiltering = true
         viewModel.filterMovies(searchText) { (movies) in
             self.movies = movies
             self.movieCollectionView.reloadData()
@@ -91,9 +92,8 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = movieCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
-        cell.favouriteButton.tag = indexPath.row
-        cell.favouriteButton.addTarget(self, action: #selector(addInFavourites(_:)), for: .touchUpInside)
         cell.movie = movies[indexPath.row]
+        cell.favouriteActionDelegate = self
         return cell
     }
     
@@ -127,13 +127,9 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 }
 
 //MARK: - Add Favourites
-extension MoviesVC {
-    @objc func addInFavourites(_ sender: UIButton) {
-        if let cell = movieCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as? MovieCollectionViewCell {
-            cell.isFavourite.toggle()
-        }
-        
-        //Add Fav here.
+extension MoviesVC: FavouriteStatusDelegate {
+    func sendFavouriteAction(with status: Bool, movie: Movie) {
+        viewModel.addRemoveFavourite(movie, status)
     }
 }
 
@@ -144,8 +140,9 @@ extension MoviesVC: MoviesViewModelDelegate {
             showMessage(err)
         case .showMovies(let movies):
             loadMovies(movies)
-        default:
-            break
+        case .reload:
+            movieCollectionView.reloadData()
+        default: break
         }
     }
     

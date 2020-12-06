@@ -7,11 +7,17 @@
 
 import UIKit
 
+protocol FavouriteStatusDelegate: class {
+    func sendFavouriteAction(with status: Bool, movie: Movie)
+}
+
 class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var movieImageView: UIImageView!
     @IBOutlet weak var favouriteButton: UIButton!
     @IBOutlet weak var movieNameLabel: UILabel!
+    
+    weak var favouriteActionDelegate: FavouriteStatusDelegate!
     
     override func awakeFromNib() {
         self.layer.cornerRadius = 4
@@ -37,8 +43,15 @@ class MovieCollectionViewCell: UICollectionViewCell {
         if let movie = movie {
             self.movieNameLabel.text = movie.originalTitle ?? ""
             self.movieImageView.downloadImage(movie.posterPath ?? "")
+            self.isFavourite = movie.isFavorite
         }
     }
+    
+    @IBAction func favouriteAction(_ sender: Any) {
+        isFavourite.toggle()
+        favouriteActionDelegate.sendFavouriteAction(with: self.isFavourite, movie: self.movie)
+    }
+    
     
     override func prepareForReuse() {
         self.movie = nil

@@ -57,7 +57,7 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
                     self.delegate.handle(.setTitle(movieDetail.originalTitle ?? ""))
                     self.setFavouriteStatus()
                     self.delegate.handle(.showDetail(movieDetail))
-                } catch (let err) {
+                } catch  {
                     self.delegate.handle(.showMessage("Decoding Err"))
                 }
             case .fail(let err):
@@ -67,9 +67,11 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
     }
     
     func addOrRemoveFavourite() {
-        isFavourited ? app.favouriteFlow.delete(movie): app.favouriteFlow.add(movie)
         isFavourited.toggle()
+        movie.isFavorite = isFavourited
+        isFavourited ? app.favouriteFlow.add(movie): app.favouriteFlow.delete(movie)
         delegate.handle(.changeFavouriteStatus(isFavourited))
+        NotificationCenter.default.post(name: NSNotification.Name("updatemoviefav"), object: self, userInfo: nil)
     }
     
     private func setFavouriteStatus() {

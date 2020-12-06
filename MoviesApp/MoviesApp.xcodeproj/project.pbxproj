@@ -13,6 +13,7 @@
 		D0324900257C0826001FE5C3 /* MovieDetail.json in Resources */ = {isa = PBXBuildFile; fileRef = D03248FF257C0826001FE5C3 /* MovieDetail.json */; };
 		D0324904257C1512001FE5C3 /* MovieDetailTbViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0324903257C1512001FE5C3 /* MovieDetailTbViewCell.swift */; };
 		D0324908257C1AB7001FE5C3 /* MovieDetailTbViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0324907257C1AB7001FE5C3 /* MovieDetailTbViewCell.xib */; };
+		D05F1266257C3B2E008674DA /* FavouriteFlowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D05F1265257C3B2E008674DA /* FavouriteFlowTests.swift */; };
 		D07A30E625790545008BEC40 /* ResourceLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A30E525790545008BEC40 /* ResourceLoader.swift */; };
 		D07A30EA25790570008BEC40 /* Movies.json in Resources */ = {isa = PBXBuildFile; fileRef = D07A30E925790570008BEC40 /* Movies.json */; };
 		D07A30EE2579062C008BEC40 /* Decoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A30ED2579062C008BEC40 /* Decoders.swift */; };
@@ -73,6 +74,7 @@
 		D03248FF257C0826001FE5C3 /* MovieDetail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MovieDetail.json; sourceTree = "<group>"; };
 		D0324903257C1512001FE5C3 /* MovieDetailTbViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailTbViewCell.swift; sourceTree = "<group>"; };
 		D0324907257C1AB7001FE5C3 /* MovieDetailTbViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieDetailTbViewCell.xib; sourceTree = "<group>"; };
+		D05F1265257C3B2E008674DA /* FavouriteFlowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteFlowTests.swift; sourceTree = "<group>"; };
 		D07A30E525790545008BEC40 /* ResourceLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourceLoader.swift; sourceTree = "<group>"; };
 		D07A30E925790570008BEC40 /* Movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Movies.json; sourceTree = "<group>"; };
 		D07A30ED2579062C008BEC40 /* Decoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoders.swift; sourceTree = "<group>"; };
@@ -291,6 +293,7 @@
 			children = (
 				D0DD575E2578FB120067A8E9 /* MoviesTests.swift */,
 				D03248FB257C0577001FE5C3 /* MovieDetailTests.swift */,
+				D05F1265257C3B2E008674DA /* FavouriteFlowTests.swift */,
 				D0DD57602578FB120067A8E9 /* Info.plist */,
 			);
 			path = MoviesAppTests;
@@ -486,6 +489,7 @@
 			files = (
 				D0DD575F2578FB120067A8E9 /* MoviesTests.swift in Sources */,
 				D03248FC257C0577001FE5C3 /* MovieDetailTests.swift in Sources */,
+				D05F1266257C3B2E008674DA /* FavouriteFlowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
