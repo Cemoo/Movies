@@ -36,6 +36,7 @@ struct Movie: Codable, Equatable {
     let video: Bool?
     let voteAverage: Double?
     let voteCount: Int?
+    var isFavorite: Bool = false
     
     enum CodingKeys: String, CodingKey {
         case adult = "adult"
@@ -54,3 +55,4 @@ struct Movie: Codable, Equatable {
         case voteCount = "vote_count"
     }
 }
+

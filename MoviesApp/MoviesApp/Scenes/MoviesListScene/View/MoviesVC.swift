@@ -11,9 +11,7 @@ class MoviesVC: UIViewController {
 
     @IBOutlet weak var movieCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    private var cellWidth: CGFloat!
-    
+        
     private var listLayout: Bool = false
     
     private var viewModel: MoviesViewModelProtocol!
@@ -23,7 +21,6 @@ class MoviesVC: UIViewController {
     private var movies: [Movie] = []
     
     private var filteringStarted: Bool = false
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,9 +88,8 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = movieCollectionView.dequeueReusableCell(withReuseIdentifier: "MovieCollectionViewCell", for: indexPath) as! MovieCollectionViewCell
-        cell.favouriteButton.tag = indexPath.row
-        cell.favouriteButton.addTarget(self, action: #selector(addInFavourites(_:)), for: .touchUpInside)
         cell.movie = movies[indexPath.row]
+        cell.favouriteActionDelegate = self
         return cell
     }
     
@@ -120,20 +116,26 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
     private func routeDetailPage(_ index: Int) {
         let movie = movies[index]
-        let detailPage = MovieDetailBuilder.make(with: MovieDetailViewModel(app.service, movieId: movie.id ?? 0))
+        let detailPage = MovieDetailBuilder.make(with: MovieDetailViewModel(app.service, movie: movie))
         navigationController?.pushViewController(detailPage, animated: true)
     }
     
 }
 
-//MARK: - Add Favourites
-extension MoviesVC {
-    @objc func addInFavourites(_ sender: UIButton) {
-        if let cell = movieCollectionView.cellForItem(at: IndexPath(row: sender.tag, section: 0)) as? MovieCollectionViewCell {
-            cell.isFavourite.toggle()
+//MARK: - Add - Remove Favourites
+extension MoviesVC: FavouriteStatusDelegate {
+    
+    //MARK: - Collection view cell button action
+    func sendFavouriteAction(with status: Bool, movie: Movie) {
+        viewModel.addRemoveFavourite(movie, status)
+    }
+    
+    //MARK: - Reload related row after tapped star on collection view cell
+    func reloadFavouriteMovieCell(with movie: Movie) {
+        if let index = self.movies.firstIndex(where: {$0.id == movie.id}) {
+            self.movies[index].isFavorite = movie.isFavorite
+            self.movieCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
         }
-        
-        //Add Fav here.
     }
 }
 
@@ -144,8 +146,9 @@ extension MoviesVC: MoviesViewModelDelegate {
             showMessage(err)
         case .showMovies(let movies):
             loadMovies(movies)
-        default:
-            break
+        case .reloadMovie(let movie):
+            reloadFavouriteMovieCell(with: movie)
+        default: break
         }
     }
     

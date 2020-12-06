@@ -7,7 +7,6 @@
 
 import Foundation
 
-// MARK: - MovieDetail
 struct MovieDetail: Codable, Equatable {
     let adult: Bool?
     let backdropPath: String?
@@ -54,7 +53,6 @@ struct MovieDetail: Codable, Equatable {
     }
 }
 
-// MARK: - Genre
 struct Genre: Codable, Equatable {
     let id: Int?
     let name: String?
