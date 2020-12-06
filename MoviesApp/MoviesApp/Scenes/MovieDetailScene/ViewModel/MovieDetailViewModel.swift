@@ -71,7 +71,7 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
         movie.isFavorite = isFavourited
         isFavourited ? app.favouriteFlow.add(movie): app.favouriteFlow.delete(movie)
         delegate.handle(.changeFavouriteStatus(isFavourited))
-        NotificationCenter.default.post(name: NSNotification.Name("updatemoviefav"), object: self, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("updatemoviefav"), object: self, userInfo: ["movie": movie])
     }
     
     private func setFavouriteStatus() {

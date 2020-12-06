@@ -7,32 +7,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A12055C0-55C8-44F2-934C-4D774D10F735"
+            uuid = "82A7FF4F-CDF2-492F-8DCB-9D41F30FE54F"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MoviesApp/MoviesApp/Scenes/MoviesListScene/ViewModel/MoviesViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
-            landmarkName = "updateFavouriteStatus()"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "updateFavFromMovieDetail(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "61CEAC2B-CDFA-4542-B613-6EDE2F08870E"
+            uuid = "4EEFE06E-9AAC-482C-AC3F-7B009E3E3341"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MoviesApp/MoviesApp/Scenes/MoviesListScene/ViewModel/MoviesViewModel.swift"
+            filePath = "MoviesApp/MoviesApp/Scenes/MoviesListScene/View/MoviesVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
-            landmarkName = "updateFavouriteStatus()"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
+            landmarkName = "reloadFavouriteMovieCell(with:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

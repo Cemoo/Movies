@@ -22,7 +22,7 @@ enum MoviesOutputs: Equatable {
     case showLoading(Bool)
     case showMovies([Movie])
     case showError(String)
-    case reload
+    case reloadMovie(Movie)
 }
 
 protocol MoviesViewModelDelegate: class {
@@ -54,7 +54,7 @@ final class MoviesViewModel: MoviesViewModelProtocol {
                 do {
                     let movieResponse = try decoder.decode(MovieResponse.self, from: data)
                     self.movies.append(contentsOf: movieResponse.results ?? [])
-                    self.updateFavouriteStatus()
+                    self.updateAllMoviesFavouriteStatusOnStart()
                     self.tempMoviesForfilter = self.movies
                     self.delegate.handle(.showMovies(self.movies))
                 } catch {
@@ -79,24 +79,34 @@ final class MoviesViewModel: MoviesViewModelProtocol {
         completion(filteredMovies)
     }
     
-    @objc func updateFavFromMovieDetail() {
-        updateFavouriteStatus()
-        delegate.handle(.showMovies(movies))
+    @objc func updateFavFromMovieDetail(_ notification: Notification) {
+        if let info = notification.userInfo, let movie = info["movie"] as? Movie {
+            self.updateFavouriteStatus(for: movie)
+            //self.delegate.handle(.showMovies(movies))
+            delegate.handle(.reloadMovie(movie))
+        }
     }
     
     func addRemoveFavourite(_ movie: Movie, _ status: Bool) {
         status ? app.favouriteFlow.add(movie) : app.favouriteFlow.delete(movie)
-        updateFavouriteStatus()
-        delegate.handle(.showMovies(movies))
+        updateFavouriteStatus(for: movie)
+        //delegate.handle(.showMovies(movies))
+        delegate.handle(.reloadMovie(movie))
     }
     
-    private func updateFavouriteStatus() {
+    private func updateFavouriteStatus(for movie: Movie) {
+        if let index = self.movies.firstIndex(where: {$0.id == movie.id}) {
+            self.movies[index].isFavorite = movie.isFavorite
+        }
+    }
+    
+    private func updateAllMoviesFavouriteStatusOnStart() {
         let favMovies = app.favouriteFlow.get()
         
         if !favMovies.isEmpty {
             favMovies.forEach { (favMovie) in
                 if let index = self.movies.firstIndex(where: {$0.id == favMovie.id}) {
-                    self.movies[index].isFavorite = favMovie.isFavorite 
+                    self.movies[index].isFavorite = favMovie.isFavorite
                 }
             }
         } else {

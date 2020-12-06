@@ -126,10 +126,17 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
     
 }
 
-//MARK: - Add Favourites
+//MARK: - Add - Remove Favourites
 extension MoviesVC: FavouriteStatusDelegate {
     func sendFavouriteAction(with status: Bool, movie: Movie) {
         viewModel.addRemoveFavourite(movie, status)
+    }
+    
+    func reloadFavouriteMovieCell(with movie: Movie) {
+        if let index = self.movies.firstIndex(where: {$0.id == movie.id}) {
+            self.movies[index].isFavorite = movie.isFavorite
+            self.movieCollectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+        }
     }
 }
 
@@ -140,8 +147,8 @@ extension MoviesVC: MoviesViewModelDelegate {
             showMessage(err)
         case .showMovies(let movies):
             loadMovies(movies)
-        case .reload:
-            movieCollectionView.reloadData()
+        case .reloadMovie(let movie):
+            reloadFavouriteMovieCell(with: movie)
         default: break
         }
     }

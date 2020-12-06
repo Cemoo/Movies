@@ -49,6 +49,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     
     @IBAction func favouriteAction(_ sender: Any) {
         isFavourite.toggle()
+        self.movie.isFavorite = isFavourite
         favouriteActionDelegate.sendFavouriteAction(with: self.isFavourite, movie: self.movie)
     }
     
