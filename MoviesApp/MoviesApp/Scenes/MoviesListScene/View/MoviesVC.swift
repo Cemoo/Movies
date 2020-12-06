@@ -11,9 +11,7 @@ class MoviesVC: UIViewController {
 
     @IBOutlet weak var movieCollectionView: UICollectionView!
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    private var cellWidth: CGFloat!
-    
+        
     private var listLayout: Bool = false
     
     private var viewModel: MoviesViewModelProtocol!
@@ -55,7 +53,6 @@ extension MoviesVC: UISearchBarDelegate {
     private func cancelFiltering() {
         searchBar.text = nil
         movies = viewModel.movies
-        viewModel.isMoviesFiltering = false
         movieCollectionView.reloadData()
         filteringStarted = false
         view.endEditing(true)
@@ -71,7 +68,6 @@ extension MoviesVC: UISearchBarDelegate {
             return
         }
         
-        viewModel.isMoviesFiltering = true
         viewModel.filterMovies(searchText) { (movies) in
             self.movies = movies
             self.movieCollectionView.reloadData()
@@ -128,10 +124,13 @@ extension MoviesVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColl
 
 //MARK: - Add - Remove Favourites
 extension MoviesVC: FavouriteStatusDelegate {
+    
+    //MARK: - Collection view cell button action
     func sendFavouriteAction(with status: Bool, movie: Movie) {
         viewModel.addRemoveFavourite(movie, status)
     }
     
+    //MARK: - Reload related row after tapped star on collection view cell
     func reloadFavouriteMovieCell(with movie: Movie) {
         if let index = self.movies.firstIndex(where: {$0.id == movie.id}) {
             self.movies[index].isFavorite = movie.isFavorite

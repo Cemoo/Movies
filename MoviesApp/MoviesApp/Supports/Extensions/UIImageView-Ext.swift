@@ -8,8 +8,8 @@
 import UIKit
 
 extension UIImageView {
-    func downloadImage(_ urlString: String) {
-        let fullUrlString = "\(app.poster_path)/w300/\(urlString)"
+    func downloadImage(_ urlString: String, _ width: Int) {
+        let fullUrlString = "\(app.poster_path)/w\(width)/\(urlString)"
         if let url = URL(string: fullUrlString) {
             let request = URLRequest(url: url)
             let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

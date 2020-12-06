@@ -27,7 +27,6 @@ enum MovieDetailOutput: Equatable {
     case changeFavouriteStatus(Bool)
 }
 
-
 final class MovieDetailViewModel: MovieDetailViewModelProtocol {
     var delegate: MovieDetailViewModelDelegate!
     

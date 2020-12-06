@@ -42,7 +42,7 @@ class MovieCollectionViewCell: UICollectionViewCell {
     private func setMovie() {
         if let movie = movie {
             self.movieNameLabel.text = movie.originalTitle ?? ""
-            self.movieImageView.downloadImage(movie.posterPath ?? "")
+            self.movieImageView.downloadImage(movie.posterPath ?? "", 200)
             self.isFavourite = movie.isFavorite
         }
     }

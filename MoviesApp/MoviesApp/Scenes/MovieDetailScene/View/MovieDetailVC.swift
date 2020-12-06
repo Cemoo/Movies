@@ -32,13 +32,15 @@ class MovieDetailVC: UIViewController {
         detailTableView.tableFooterView = UIView()
     }
     
+    //MARK: - Set movie poster
     private func setMovieImage() {
         DispatchQueue.main.async {
-            self.movieImageView.downloadImage(self.movieDetail.posterPath ?? "")
+            self.movieImageView.downloadImage(self.movieDetail.posterPath ?? "", 300)
             self.detailTableView.reloadData()
         }
     }
     
+    //MARK: - Set page title
     private func setTitle(with title: String) {
         DispatchQueue.main.async {
             self.title = title

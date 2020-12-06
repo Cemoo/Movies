@@ -8,10 +8,11 @@
 import Foundation
 import MoviesAPI
 
+
+//MARK: - Movie View Model Protocol
 protocol MoviesViewModelProtocol: class {
     var delegate: MoviesViewModelDelegate! {get set}
     var movies: [Movie] {get set}
-    var isMoviesFiltering: Bool {get set}
     
     func load(with page: Int)
     func filterMovies(_ filterText: String, _ completion: @escaping ([Movie]) -> Void)
@@ -29,11 +30,12 @@ protocol MoviesViewModelDelegate: class {
     func handle(_ output: MoviesOutputs)
 }
 
+
+//MARK: - Movie View Model
 final class MoviesViewModel: MoviesViewModelProtocol {
     weak var delegate: MoviesViewModelDelegate!
     
     var movies: [Movie] = []
-    var isMoviesFiltering: Bool = false
     
     private var tempMoviesForfilter: [Movie] = []
     private var service: APIProtocol!
@@ -71,29 +73,27 @@ final class MoviesViewModel: MoviesViewModelProtocol {
             guard let title = movie.originalTitle else {
                 return false
             }
-            
+
             return title.contains(filterText)
-            
         }
-        
         completion(filteredMovies)
-    }
-    
-    @objc func updateFavFromMovieDetail(_ notification: Notification) {
-        if let info = notification.userInfo, let movie = info["movie"] as? Movie {
-            self.updateFavouriteStatus(for: movie)
-            //self.delegate.handle(.showMovies(movies))
-            delegate.handle(.reloadMovie(movie))
-        }
     }
     
     func addRemoveFavourite(_ movie: Movie, _ status: Bool) {
         status ? app.favouriteFlow.add(movie) : app.favouriteFlow.delete(movie)
         updateFavouriteStatus(for: movie)
-        //delegate.handle(.showMovies(movies))
         delegate.handle(.reloadMovie(movie))
     }
     
+    //MARK: - Updates favourite status from movie detail page.
+    @objc func updateFavFromMovieDetail(_ notification: Notification) {
+        if let info = notification.userInfo, let movie = info["movie"] as? Movie {
+            self.updateFavouriteStatus(for: movie)
+            delegate.handle(.reloadMovie(movie))
+        }
+    }
+    
+    //MARK: - Updates favourite status related row.
     private func updateFavouriteStatus(for movie: Movie) {
         if let index = self.movies.firstIndex(where: {$0.id == movie.id}) {
             self.movies[index].isFavorite = movie.isFavorite
@@ -102,6 +102,7 @@ final class MoviesViewModel: MoviesViewModelProtocol {
         self.tempMoviesForfilter = self.movies
     }
     
+    //MARK: - This function calls first opened of app.
     private func updateAllMoviesFavouriteStatusOnStart() {
         let favMovies = app.favouriteFlow.get()
         
