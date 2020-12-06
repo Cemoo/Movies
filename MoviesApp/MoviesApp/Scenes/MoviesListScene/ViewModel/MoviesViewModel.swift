@@ -98,6 +98,8 @@ final class MoviesViewModel: MoviesViewModelProtocol {
         if let index = self.movies.firstIndex(where: {$0.id == movie.id}) {
             self.movies[index].isFavorite = movie.isFavorite
         }
+        
+        self.tempMoviesForfilter = self.movies
     }
     
     private func updateAllMoviesFavouriteStatusOnStart() {
