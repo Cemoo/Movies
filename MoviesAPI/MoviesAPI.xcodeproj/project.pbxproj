@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		47391B4A1ADA2C1CBE647E33 /* Pods_MoviesAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11EBF1758C18A1C2B9058C4B /* Pods_MoviesAPI.framework */; };
 		D0D03A4A2578BEE2001D131B /* MoviesAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D03A402578BEE1001D131B /* MoviesAPI.framework */; };
 		D0D03A4F2578BEE2001D131B /* MoviesAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D03A4E2578BEE2001D131B /* MoviesAPITests.swift */; };
 		D0D03A512578BEE2001D131B /* MoviesAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D03A432578BEE1001D131B /* MoviesAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,6 +26,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		11EBF1758C18A1C2B9058C4B /* Pods_MoviesAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MoviesAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2AA3C8250260E631A0254189 /* Pods-MoviesAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAPI.debug.xcconfig"; path = "Target Support Files/Pods-MoviesAPI/Pods-MoviesAPI.debug.xcconfig"; sourceTree = "<group>"; };
+		8B5429CF90063058C7D8CBB4 /* Pods-MoviesAPI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MoviesAPI.release.xcconfig"; path = "Target Support Files/Pods-MoviesAPI/Pods-MoviesAPI.release.xcconfig"; sourceTree = "<group>"; };
 		D0D03A402578BEE1001D131B /* MoviesAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MoviesAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0D03A432578BEE1001D131B /* MoviesAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MoviesAPI.h; sourceTree = "<group>"; };
 		D0D03A442578BEE1001D131B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -40,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47391B4A1ADA2C1CBE647E33 /* Pods_MoviesAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,12 +59,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4DB1D50D500DFA28AB447CE0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2AA3C8250260E631A0254189 /* Pods-MoviesAPI.debug.xcconfig */,
+				8B5429CF90063058C7D8CBB4 /* Pods-MoviesAPI.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../Pods;
+			sourceTree = "<group>";
+		};
+		8978C698E63A24B64B3A948F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				11EBF1758C18A1C2B9058C4B /* Pods_MoviesAPI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D0D03A362578BEE1001D131B = {
 			isa = PBXGroup;
 			children = (
 				D0D03A422578BEE1001D131B /* MoviesAPI */,
 				D0D03A4D2578BEE2001D131B /* MoviesAPITests */,
 				D0D03A412578BEE1001D131B /* Products */,
+				4DB1D50D500DFA28AB447CE0 /* Pods */,
+				8978C698E63A24B64B3A948F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,6 +135,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D0D03A542578BEE2001D131B /* Build configuration list for PBXNativeTarget "MoviesAPI" */;
 			buildPhases = (
+				BF0F957C21601804D09CA8CA /* [CP] Check Pods Manifest.lock */,
 				D0D03A3B2578BEE1001D131B /* Headers */,
 				D0D03A3C2578BEE1001D131B /* Sources */,
 				D0D03A3D2578BEE1001D131B /* Frameworks */,
@@ -195,6 +221,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BF0F957C21601804D09CA8CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MoviesAPI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D0D03A3C2578BEE1001D131B /* Sources */ = {
@@ -349,6 +400,7 @@
 		};
 		D0D03A552578BEE2001D131B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2AA3C8250260E631A0254189 /* Pods-MoviesAPI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -367,14 +419,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cemal.MoviesAPI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		D0D03A562578BEE2001D131B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8B5429CF90063058C7D8CBB4 /* Pods-MoviesAPI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -393,8 +447,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.cemal.MoviesAPI;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

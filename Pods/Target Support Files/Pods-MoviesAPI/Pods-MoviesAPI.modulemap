@@ -1,0 +1,6 @@
+framework module Pods_MoviesAPI {
+  umbrella header "Pods-MoviesAPI-umbrella.h"
+
+  export *
+  module * { export * }
+}
